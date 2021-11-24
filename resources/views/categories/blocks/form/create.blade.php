@@ -1,7 +1,12 @@
-@include('cms.blocks.form.messages')
-{{ Form::open(['url' => App\Helpers\RouteBuilder::localeRoute('cms.countries.store')]) }}
-    @include('countries.blocks.form.fields')
-    <div class="form-group">
-        {{ Form::submit(__('messages.addCountry'), array('class' => 'btn btn-success', 'id' => 'create-country')) }}
+<form action="{{ route('categories.store') }}" method="POST">
+    <div class="card">
+        <div class="card-body">
+            @csrf
+            @include('categories.blocks.form.fields')
+        </div>
+        <div class="card-footer">
+            <a href="{{route('categories.index')}}" class="btn btn-default">Назад</a>
+            <button type="submit" class="btn btn-success">Сохранить</button>
+        </div>
     </div>
-{{ Form::close() }}
+</form>

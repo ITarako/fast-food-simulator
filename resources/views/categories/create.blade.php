@@ -1,7 +1,6 @@
-@extends('adminlte::page')
-
 <?php
-$title = 'Список категорий';
+
+$title = 'Создание категории';
 $breadcrumbs = [
     [
         'url' => '/',
@@ -11,8 +10,13 @@ $breadcrumbs = [
         'url' => route('categories.index'),
         'title' => 'Категории',
     ],
+    [
+        'title' => $title,
+    ],
 ];
 ?>
+@extends('adminlte::page')
+
 @section('title')
     {{$title}}
 @endsection
@@ -29,5 +33,5 @@ $breadcrumbs = [
 @endsection
 
 @section('content')
-    @include('categories.blocks.list.index')
+    @include('categories.blocks.form.create')
 @endsection

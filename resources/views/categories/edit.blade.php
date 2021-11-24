@@ -1,17 +1,26 @@
-@extends('adminlte::page')
-
 <?php
-$title = 'Категории';
+
+/**
+ * @var \App\Models\RecipeCategory $category
+ */
+
+$title = 'Редактирование категории';
 $breadcrumbs = [
     [
         'url' => '/',
         'title' => 'Домой',
     ],
     [
+        'url' => route('categories.index'),
+        'title' => 'Категории',
+    ],
+    [
         'title' => $title,
     ],
 ];
 ?>
+@extends('adminlte::page')
+
 @section('title')
     {{$title}}
 @endsection
@@ -28,5 +37,5 @@ $breadcrumbs = [
 @endsection
 
 @section('content')
-    @include('categories.blocks.list.index')
+    @include('categories.blocks.form.edit')
 @endsection

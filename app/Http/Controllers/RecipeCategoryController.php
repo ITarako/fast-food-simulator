@@ -2,80 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\RecipeCategory\RecipeCategoryCreateRequest;
+use App\Http\Requests\Admin\RecipeCategory\RecipeCategoryUpdateRequest;
 use App\Models\RecipeCategory;
-use Illuminate\Http\Request;
 
+/**
+ * Class RecipeCategoryController
+ * @package App\Http\Controllers
+ */
 class RecipeCategoryController extends Controller
 {
     public function index()
     {
-        $categories = RecipeCategory::paginate();
-        return view('categories.index2', compact('categories'));
+        $categories = RecipeCategory::orderBy('updated_at', 'desc')->paginate();
+        return view('categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(RecipeCategoryCreateRequest $request)
     {
-        //
+        $data = $request->validated();
+        $category = new RecipeCategory();
+        $category->create($data);
+
+        return redirect(route('categories.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\RecipeCategory  $recipeCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RecipeCategory $recipeCategory)
+    public function show(RecipeCategory $category)
     {
-        //
+        return view('categories.show', ['category' => $category]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\RecipeCategory  $recipeCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RecipeCategory $recipeCategory)
+    public function edit(RecipeCategory $category)
     {
-        //
+        return view('categories.edit', ['category' => $category]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RecipeCategory  $recipeCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RecipeCategory $recipeCategory)
+    public function update(RecipeCategoryUpdateRequest $request, RecipeCategory $category)
     {
-        //
+        $data = $request->formData($request);
+        $category->update($data);
+
+        return redirect(route('categories.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\RecipeCategory  $recipeCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RecipeCategory $recipeCategory)
+    public function destroy(RecipeCategory $category)
     {
-        //
+        $category->delete();
+
+        return redirect(route('categories.index'));
     }
 }

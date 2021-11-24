@@ -1,6 +1,25 @@
-<?php /** @var \App\Models\RecipeCategory $category */ ?>
+<?php
+/**
+ * @var \App\Models\RecipeCategory $category
+ */
+
+?>
 <tr>
-    <td>{{ url(route('categories.show', ['category' => $category['id']]), $category['id']) }}</td>
-    <td>{{ url(route('categories.show', ['category' => $category->id]), $category['name']) }}</td>
-    <td>@date($category['created_at'])</td>
+    <td>{{ $idx }}</td>
+    <td>{{ $category->name }}</td>
+    <td>{{ $category->getIsActiveLabel() }}</td>
+    <td>
+        <a href="{{ route('categories.show', ['category' => $category]) }}" class="btn btn-sm btn-info" title="Просмотр">
+            <i class="fas fa-eye"></i>
+        </a>
+        <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-sm btn-primary"
+           title="Редактировать">
+            <i class="fas fa-edit"></i>
+        </a>
+        <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display: inline">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger btn-sm" title="Удалить"><i class="fas fa-trash"></i></button>
+        </form>
+    </td>
 </tr>

@@ -8,4 +8,4 @@ all:
 	@echo 'you must enter target: build-prod, build-test or build-dev'
 
 storage-777:
-	chmod -R 777 ${CURRENT_DIR}/../storage
+	sudo chmod -R 777 ${CURRENT_DIR}/../storage

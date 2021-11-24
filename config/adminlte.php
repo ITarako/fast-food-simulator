@@ -256,7 +256,8 @@ return [
         ['header' => 'cook_book'],
         [
             'text' => 'categories',
-            'url'  => 'categories',
+            'route'  => 'categories.index',
+            'active' => ['categories*'],
             'icon' => 'fas fa-fw fa-th-large',
         ],
 //        [

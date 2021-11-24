@@ -1,7 +1,13 @@
-@include('cms.blocks.form.messages')
-{{ Form::model($country, ['url' => App\Helpers\RouteBuilder::localeRoute('cms.countries.update', ['country' => $country]), 'method' => 'PUT']) }}
-    @include('countries.blocks.form.fields')
-    <div class="form-group">
-        {{ Form::submit(__('messages.edit'), array('class' => 'btn btn-success')) }}
+<form action="{{ route('categories.update', ['category' => $category]) }}" method="POST">
+    <div class="card">
+        <div class="card-body">
+            @csrf
+            @method('PUT')
+            @include('categories.blocks.form.fields')
+        </div>
+        <div class="card-footer">
+            <a href="{{route('categories.index')}}" class="btn btn-default">Назад</a>
+            <button type="submit" class="btn btn-success">Сохранить</button>
+        </div>
     </div>
-{{ Form::close() }}
+</form>

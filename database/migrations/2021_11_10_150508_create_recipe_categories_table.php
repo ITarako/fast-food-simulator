@@ -24,9 +24,9 @@ class CreateRecipeCategoriesTable extends Migration
         Schema::create('recipe_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestampTz('created_at')->useCurrent();
             $table->timestampTz('updated_at')->useCurrent();
-            $table->softDeletesTz();
         });
 
         foreach ($this->list as $item) {

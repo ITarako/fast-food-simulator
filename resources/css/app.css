@@ -11,3 +11,14 @@
 /*Bootstrap*/
 /*Already imported by AdminLTE*/
 /*@import 'bootstrap';*/
+
+.non-button, .non-button:hover, .non-button:focus, .non-button:active, .non-button:focus:active {
+    cursor: default !important;
+    background-color: #007bff !important;
+    box-shadow: none;
+    outline: none;
+}
+
+.non-button .badge-light {
+    color: #007bff;
+}
