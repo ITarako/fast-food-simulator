@@ -29,7 +29,9 @@ class RecipeCategoryController extends Controller
         $category = new RecipeCategory();
         $category->create($data);
 
-        return redirect(route('categories.index'));
+        return redirect()
+            ->route('categories.index')
+            ->with('message', 'Категория успешно создана');
     }
 
     public function show(RecipeCategory $category)
@@ -47,13 +49,17 @@ class RecipeCategoryController extends Controller
         $data = $request->formData($request);
         $category->update($data);
 
-        return redirect(route('categories.index'));
+        return redirect()
+            ->route('categories.index')
+            ->with('message', 'Категория успешно обновлена');
     }
 
     public function destroy(RecipeCategory $category)
     {
         $category->delete();
 
-        return redirect(route('categories.index'));
+        return redirect()
+            ->route('categories.index')
+            ->with('message', 'Категория успешно удалена');
     }
 }

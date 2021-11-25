@@ -12,6 +12,8 @@
 /*Already imported by AdminLTE*/
 /*@import 'bootstrap';*/
 
+@import 'toastr/build/toastr.css';
+
 .non-button, .non-button:hover, .non-button:focus, .non-button:active, .non-button:focus:active {
     cursor: default !important;
     background-color: #007bff !important;

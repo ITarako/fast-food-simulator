@@ -19,7 +19,7 @@ $breadcrumbs = [
     ],
 ];
 ?>
-@extends('adminlte::page')
+@extends('admin.layouts.app')
 
 @section('title')
     {{$title}}
