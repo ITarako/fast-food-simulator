@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin\RecipeCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class RecipeCategoryUpdateRequest
@@ -28,8 +29,14 @@ class RecipeCategoryUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $category = $this->route('category');
         return [
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('recipe_categories')->ignore($category),
+            ],
         ];
     }
 

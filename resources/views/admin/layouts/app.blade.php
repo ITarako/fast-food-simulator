@@ -18,6 +18,12 @@
             @if(Session::has('warning'))
             toastr.warning("{{ session('warning') }}");
             @endif
+
+            @if($errors->all())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{{ $error }}");
+                @endforeach
+            @endif
         })
     </script>
 @endpush

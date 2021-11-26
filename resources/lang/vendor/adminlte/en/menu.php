@@ -18,5 +18,6 @@ return [
     'information' => 'Information',
 
     'categories' => 'Categories',
+    'units' => 'Units',
     'cook_book' => 'COOK BOOK',
 ];

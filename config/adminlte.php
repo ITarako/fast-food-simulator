@@ -260,6 +260,12 @@ return [
             'active' => ['categories*'],
             'icon' => 'fas fa-fw fa-th-large',
         ],
+        [
+            'text' => 'units',
+            'route'  => 'units.index',
+            'active' => ['units*'],
+            'icon' => 'fas fa-fw fa-balance-scale',
+        ],
 //        [
 //            'text' => 'change_password',
 //            'url'  => 'admin/settings',

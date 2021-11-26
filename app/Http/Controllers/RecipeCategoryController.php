@@ -14,7 +14,7 @@ class RecipeCategoryController extends Controller
 {
     public function index()
     {
-        $categories = RecipeCategory::orderBy('updated_at', 'desc')->paginate();
+        $categories = RecipeCategory::latest('updated_at')->paginate();
         return view('categories.index', compact('categories'));
     }
 
@@ -51,7 +51,7 @@ class RecipeCategoryController extends Controller
 
         return redirect()
             ->route('categories.index')
-            ->with('message', 'Категория успешно обновлена');
+            ->with('message', 'Категория успешно изменена');
     }
 
     public function destroy(RecipeCategory $category)

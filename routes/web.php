@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecipeCategoryController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('categories', RecipeCategoryController::class);
+Route::resource('units', UnitController::class, ['only' => ['index', 'edit', 'update',]]);
 
 require __DIR__.'/auth.php';

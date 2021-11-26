@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Requests\Admin\RecipeCategory;
+namespace App\Http\Requests\Admin\Unit;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
- * Class RecipeCategoryCreateRequest
- * @package App\Http\Requests\Admin\RecipeCategory
+ * Class UnitRequest
+ * @package App\Http\Requests\Admin\Unit
  */
-class RecipeCategoryCreateRequest extends FormRequest
+class UnitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +28,14 @@ class RecipeCategoryCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $unit = $this->route('unit');
         return [
-            'name' => 'required|string|max:255|unique:recipe_categories,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('units')->ignore($unit),
+            ],
         ];
     }
 }
